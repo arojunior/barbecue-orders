@@ -4,9 +4,45 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "84dd18c1372061b7253db793d4f7227f",
-    "content-hash": "28a733d1550fe61e1012d83fa28537f4",
+    "hash": "908ad4fd9a02064b50d1833f9446acee",
+    "content-hash": "f40e1bdf86c72f2938766732021055de",
     "packages": [
+        {
+            "name": "arojunior/php-orm-pdo",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arojunior/php-orm-pdo.git",
+                "reference": "9b9eb4394473718e6c3851d1c2168099d7f9baf3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arojunior/php-orm-pdo/zipball/9b9eb4394473718e6c3851d1c2168099d7f9baf3",
+                "reference": "9b9eb4394473718e6c3851d1c2168099d7f9baf3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SimpleORM\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Junior Oliveira",
+                    "email": "arojunior@gmail.com"
+                }
+            ],
+            "description": "Micro PHP ORM Library",
+            "time": "2017-06-14 12:53:22"
+        },
         {
             "name": "container-interop/container-interop",
             "version": "1.2.0",
@@ -1744,7 +1780,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "arojunior/php-orm-pdo": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
