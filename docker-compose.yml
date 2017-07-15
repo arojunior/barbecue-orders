@@ -40,10 +40,10 @@ services:
     client:
         image: nginx:latest
         ports:
-            - "3000:80"
+            - "3000:3000"
         volumes:
-            - ./client:/var/www/html
             - ./docker/nginx/client.conf:/etc/nginx/conf.d/default.conf
+            - ./client/build:/var/www/html
 
     mysql:
         image: mysql:latest
