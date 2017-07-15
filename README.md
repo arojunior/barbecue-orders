@@ -30,9 +30,9 @@ Under construction.
 # Requeriments
 
 ### Login
--[x] User should log in with e-mail and password
--[x] All form fields are required
--[x] It should show a warning if user try to send the form empty
+- [x] User should log in with e-mail and password
+- [x] All form fields are required
+- [x] It should show a warning if user try to send the form empty
 
 ### New account
 -[ ] Everyone can create an account
