@@ -2,6 +2,7 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import renderField, {required, email} from 'redux-form-field-wrapper'
 import {Col, Button, FormGroup} from 'react-bootstrap'
+import {Link} from 'react-router'
 
 const fieldConfig = {
   divClass: 'form-group',
@@ -39,9 +40,9 @@ const Form = props => {
             disabled={pristine || submitting}>
             Sign in
           </Button>{' '}
-          <a href="#" className="btn btn-warning">
+          <Link to="/users/new" className="btn btn-warning">
             Sign up
-          </a>
+          </Link>
         </FormGroup>
       </Col>
     </form>

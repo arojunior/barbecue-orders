@@ -1,21 +1,27 @@
-import {handleAction} from 'redux-actions'
+import {handleActions} from 'redux-actions'
 import {defineState} from 'redux-localstore'
 
-import {LOGIN_SUCCESS} from './actions'
+import {LOGIN_SUCCESS, LOGIN_ERROR} from './actions'
 
 const defaultState = {
   data: null,
-  isLogged: false
+  isLogged: false,
+  error: null
 }
 
 const initialState = defineState(defaultState)('Login')
 
-export default handleAction(
-  LOGIN_SUCCESS,
-  (state, action) => ({
-    ...state,
-    data: action.payload.data,
-    isLogged: true
-  }),
+export default handleActions(
+  {
+    [LOGIN_SUCCESS]: (state, action) => ({
+      ...state,
+      data: action.payload.data,
+      isLogged: true
+    }),
+    [LOGIN_ERROR]: (state, action) => ({
+      ...state,
+      error: action.payload.data.error.msg
+    })
+  },
   initialState
 )
