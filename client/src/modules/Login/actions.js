@@ -8,7 +8,7 @@ const loginSuccess = createAction(LOGIN_SUCCESS)
 
 export const sendLogin = values => dispatch => {
   axios
-    .post('/login', values)
+    .post('/api/login', values)
     .then(user => dispatch(loginSuccess(user)))
-    .then(() => browserHistory.push('/home'))
+    .then(() => browserHistory.push('/dashboard'))
 }

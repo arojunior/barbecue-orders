@@ -1,7 +1,7 @@
 import Layout from '../layouts'
 
-import Home from './Home'
-import About from './About/routes'
+import Dashboard from './Dashboard'
+import Orders from './Orders'
 import Login from './Login'
 
 export default [
@@ -10,9 +10,9 @@ export default [
     component: Login
   },
   {
-    path: '/home',
+    path: '/dashboard',
     component: Layout,
-    indexRoute: Home,
-    childRoutes: [About]
+    indexRoute: Dashboard,
+    childRoutes: [Orders]
   }
 ]

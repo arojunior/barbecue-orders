@@ -13,8 +13,8 @@ const Navigation = () =>
       </Navbar.Brand>
     </Navbar.Header>
     <Nav>
-      <LinkContainer to="/home">
-        <NavItem eventKey={1}>Home</NavItem>
+      <LinkContainer to="/dashboard">
+        <NavItem eventKey={1}>Dashboard</NavItem>
       </LinkContainer>
       <LinkContainer to="/">
         <NavItem eventKey={2}>Logout</NavItem>
