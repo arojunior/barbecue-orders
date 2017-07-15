@@ -8,7 +8,7 @@ class UsersRepository implements UsersInterface
 {
 
     protected $user;
-    public $error = false;
+    public $error;
 
     public function __construct()
     {
@@ -18,10 +18,10 @@ class UsersRepository implements UsersInterface
     public function create($data)
     {
         if (self::checkIfUserExists($data)) {
-            $this->error = 'This user already exists';
+            $this->error = $this->user->errors->emit('USER_ALREADY_EXISTS');
             return false;
         }
-        
+
         $this->user->save(self::hashPassword($data));
         return $this->user->lastSavedId();
     }
