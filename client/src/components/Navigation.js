@@ -1,21 +1,25 @@
 import React from 'react'
 import {Link} from 'react-router'
-
-const styles = {
-  link: {
-    display: 'inline-block',
-    margin: '0.5em'
-  }
-}
+import {Navbar, Nav, NavItem} from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
 
 const Navigation = () =>
-  <nav>
-    <Link to="/" style={styles.link}>
-      Home
-    </Link>
-    <Link to="/about" style={styles.link}>
-      About
-    </Link>
-  </nav>
+  <Navbar>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <Link className="navbar-brand" href="/home">
+          Barbecue Orders
+        </Link>
+      </Navbar.Brand>
+    </Navbar.Header>
+    <Nav>
+      <LinkContainer to="/home">
+        <NavItem eventKey={1}>Home</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/">
+        <NavItem eventKey={2}>Logout</NavItem>
+      </LinkContainer>
+    </Nav>
+  </Navbar>
 
 export default Navigation

@@ -1,18 +1,23 @@
 import React from 'react'
-import Navigation from './../components/Navigation'
+import {Grid, Row, Col} from 'react-bootstrap'
+
+import Navigation from '../components/Navigation'
+import Session from '../components/Session'
 
 const Layout = ({children}) =>
   <div>
     <Navigation />
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
-      </div>
-      <div className="App-intro">
-        {children}
-      </div>
-    </div>
+    <Grid>
+      <Row>
+        <Col md={10} mdOffset={1}>
+          <div className="panel panel-primary">
+            <div className="panel-body">
+              {Session(children)}
+            </div>
+          </div>
+        </Col>
+      </Row>
+    </Grid>
   </div>
 
 export default Layout
