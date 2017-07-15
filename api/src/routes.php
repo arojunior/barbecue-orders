@@ -9,3 +9,4 @@ $app->get('/', function ($request, $response) {
 });
 
 $app->post('/users', '\BarbecueOrders\Controllers\UsersController:add');
+$app->post('/login', '\BarbecueOrders\Controllers\LoginController:index');
