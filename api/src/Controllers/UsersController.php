@@ -3,16 +3,15 @@
 namespace BarbecueOrders\Controllers;
 
 use BarbecueOrders\Controllers\AppController;
-use BarbecueOrders\Repositories\UsersRepository;
 
 class UsersController extends AppController
 {
 
     protected $user;
 
-    public function __construct()
+    public function __construct($repository)
     {
-        $this->user = new UsersRepository;
+        $this->user = $repository;
     }
 
     public function add($request, $response, $args)

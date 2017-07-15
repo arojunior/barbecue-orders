@@ -1,24 +1,25 @@
 <?php
 namespace BarbecueOrders\Repositories;
 
-use BarbecueOrders\Models\User;
 use BarbecueOrders\Repositories\Contracts\UsersInterface;
 
 class UsersRepository implements UsersInterface
 {
 
     protected $user;
+    protected $errorHandler;
     public $error;
 
-    public function __construct()
+    public function __construct($model, $errorHandler)
     {
-        $this->user = new User;
+        $this->user = $model;
+        $this->errorHandler = $errorHandler;
     }
 
     public function create($data)
     {
         if (self::checkIfUserExists($data)) {
-            $this->error = $this->user->errors->emit('USER_ALREADY_EXISTS');
+            $this->error = $this->errorHandler->emit('USER_ALREADY_EXISTS');
             return false;
         }
 
