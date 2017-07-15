@@ -1,4 +1,4 @@
-import axios from './service'
+import axios from '../service'
 import {createAction} from 'redux-actions'
 import {browserHistory} from 'react-router'
 
