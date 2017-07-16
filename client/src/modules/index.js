@@ -4,6 +4,7 @@ import {applyMiddleware, compose} from 'redux'
 import {getState} from 'redux-localstore'
 import fetchMiddleware from 'fetch-middleware'
 import thunkMiddleware from 'redux-thunk'
+import {isEmpty} from 'ramda'
 
 import Login from './Login'
 import Users from './Users'
@@ -23,9 +24,11 @@ const enhancer = {
 
 const modules = [formModule, Login, Users, enhancer]
 
-const initialState = getState() && {
+const localStore = getState()
+
+const defaultState = {
   isLogged: false,
   error: null
 }
 
-export default boot(initialState, modules)
+export default boot(isEmpty(localStore) ? defaultState : localStore, modules)
