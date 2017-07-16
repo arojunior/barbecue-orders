@@ -10,7 +10,7 @@ const userError = createAction(USER_ERROR)
 
 export const newUser = values => dispatch => {
   axios
-    .post('/users', values)
+    .post('/users', {email: values.email, password: values.password})
     .then(user => dispatch(loginSuccess(user.data)))
     .then(() => browserHistory.push('/dashboard'))
     .catch(err => dispatch(userError(err.response)))
