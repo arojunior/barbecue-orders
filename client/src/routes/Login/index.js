@@ -11,7 +11,10 @@ const styles = {
 }
 
 export default compose(
-  connect(state => state.Login),
+  connect(state => ({
+    isLogged: state.isLogged,
+    error: state.error
+  })),
   withProps({
     styles
   }),

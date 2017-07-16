@@ -1,29 +1,31 @@
-import {combineReducers} from 'redux'
+import boot from 'redux-boot'
 import {reducer as formReducer} from 'redux-form'
-
-import {createStore, applyMiddleware, compose} from 'redux'
+import {applyMiddleware, compose} from 'redux'
+import {getState} from 'redux-localstore'
 import fetchMiddleware from 'fetch-middleware'
-import storeSynchronize from 'redux-localstore'
 import thunkMiddleware from 'redux-thunk'
 
 import Login from './Login'
 import Users from './Users'
 
-const combineReducer = combineReducers({
-  form: formReducer,
-  Login,
-  Users
-})
+const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f
 
-const store = createStore(
-  combineReducer,
-  {},
-  compose(
-    applyMiddleware(fetchMiddleware, thunkMiddleware),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-  )
-)
+const formModule = {
+  reducer: (state, action) => ({
+    ...state,
+    form: formReducer(state.form, action)
+  })
+}
 
-storeSynchronize(store)
+const enhancer = {
+  enhancer: compose(applyMiddleware(fetchMiddleware, thunkMiddleware), devTools)
+}
 
-export default store
+const modules = [formModule, Login, Users, enhancer]
+
+const initialState = getState() && {
+  isLogged: false,
+  error: null
+}
+
+export default boot(initialState, modules)

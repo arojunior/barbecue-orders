@@ -35,7 +35,9 @@ const Container = ({handleSubmit, styles, error}) =>
   </Grid>
 
 export default compose(
-  connect(state => state.Users),
+  connect(state => ({
+    error: state.error
+  })),
   withProps({
     styles
   }),

@@ -22,7 +22,7 @@ const Navigation = () =>
       <LinkContainer to="/orders/add">
         <NavItem eventKey={3}>New order</NavItem>
       </LinkContainer>
-      <LinkContainer to="/dashboard">
+      <LinkContainer to="/users">
         <NavItem eventKey={4}>My account</NavItem>
       </LinkContainer>
       <LinkContainer to="/">
