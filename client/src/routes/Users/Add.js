@@ -1,8 +1,10 @@
 import React from 'react'
-import {Grid, Row, Col, Jumbotron} from 'react-bootstrap'
-import {compose, withProps} from 'recompose'
+import {connect} from 'react-redux'
+import {Grid, Row, Col, Jumbotron, Alert} from 'react-bootstrap'
+import {compose, withProps, withHandlers} from 'recompose'
 
 import Form from './components/Form'
+import {newUser} from '../../modules/Users/actions'
 
 const styles = {
   container: {
@@ -10,7 +12,7 @@ const styles = {
   }
 }
 
-const Container = ({handleSubmit, styles}) =>
+const Container = ({handleSubmit, styles, error}) =>
   <Grid style={styles.container}>
     <Col md={8} mdOffset={2}>
       <Jumbotron>
@@ -24,13 +26,20 @@ const Container = ({handleSubmit, styles}) =>
             <Form onSubmit={handleSubmit} />
           </Col>
         </Row>
+        {error &&
+          <Alert bsStyle="danger">
+            {error}
+          </Alert>}
       </Jumbotron>
     </Col>
   </Grid>
 
 export default compose(
+  connect(state => state.Users),
   withProps({
-    styles,
-    handleSubmit: () => true
+    styles
+  }),
+  withHandlers({
+    handleSubmit: props => values => props.dispatch(newUser(values))
   })
 )(Container)

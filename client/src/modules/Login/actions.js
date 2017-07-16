@@ -5,7 +5,7 @@ import {browserHistory} from 'react-router'
 export const LOGIN_SUCCESS = 'modules/Login/SUCCESS'
 export const LOGIN_ERROR = 'modules/Login/ERROR'
 
-const loginSuccess = createAction(LOGIN_SUCCESS)
+export const loginSuccess = createAction(LOGIN_SUCCESS)
 const loginError = createAction(LOGIN_ERROR)
 
 export const sendLogin = values => dispatch => {

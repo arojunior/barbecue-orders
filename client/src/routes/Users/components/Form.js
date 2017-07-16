@@ -64,6 +64,6 @@ const validate = values => {
 }
 
 export default reduxForm({
-  form: 'formLogin',
+  form: 'formNewUser',
   validate
 })(Form)

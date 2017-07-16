@@ -7,10 +7,12 @@ import storeSynchronize from 'redux-localstore'
 import thunkMiddleware from 'redux-thunk'
 
 import Login from './Login'
+import Users from './Users'
 
 const combineReducer = combineReducers({
   form: formReducer,
-  Login
+  Login,
+  Users
 })
 
 const store = createStore(

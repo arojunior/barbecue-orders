@@ -21,8 +21,12 @@ class UsersRepository implements UsersInterface
             return $this->errorHandler->emit('USER_ALREADY_EXISTS');
         }
 
+        if (isset($data['password_confirm'])) {
+            unset($data['password_confirm']);
+        }
+
         $this->user->save($this->user->hashPassword($data));
-        return $this->user->lastSavedId();
+        return ['id' => $this->user->lastSavedId()];
     }
 
     public function find($id)
@@ -45,8 +49,7 @@ class UsersRepository implements UsersInterface
 
     public function checkIfExists($data)
     {
-        $email = $data['email'];
-        return $this->user->exists($email);
+        return $this->user->exists(['email' => $data['email']]);
     }
 
 }

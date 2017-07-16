@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2'
 services:
     php:
         container_name: php

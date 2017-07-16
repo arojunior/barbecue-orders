@@ -7,7 +7,6 @@ class User extends App
 {
 
     protected $table = 'users';
-    protected $pk = 'email';
 
     public function validatePassword($data)
     {
