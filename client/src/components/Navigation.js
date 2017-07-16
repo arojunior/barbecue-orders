@@ -7,7 +7,7 @@ const Navigation = () =>
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
-        <Link className="navbar-brand" href="/home">
+        <Link className="navbar-brand" href="/dashboard">
           Barbecue Orders
         </Link>
       </Navbar.Brand>
@@ -16,8 +16,17 @@ const Navigation = () =>
       <LinkContainer to="/dashboard">
         <NavItem eventKey={1}>Dashboard</NavItem>
       </LinkContainer>
+      <LinkContainer to="/companies/add">
+        <NavItem eventKey={2}>New company</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/orders/add">
+        <NavItem eventKey={3}>New order</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/dashboard">
+        <NavItem eventKey={4}>My account</NavItem>
+      </LinkContainer>
       <LinkContainer to="/">
-        <NavItem eventKey={2}>Logout</NavItem>
+        <NavItem eventKey={5}>Logout</NavItem>
       </LinkContainer>
     </Nav>
   </Navbar>
