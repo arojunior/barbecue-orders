@@ -2,7 +2,7 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import renderField, {required, email} from 'redux-form-field-wrapper'
 import {Col, Button, FormGroup} from 'react-bootstrap'
-import R from 'ramda'
+import {equals} from 'ramda'
 
 const fieldConfig = {
   divClass: 'form-group',
@@ -57,7 +57,7 @@ const Form = props => {
 const validate = values => {
   const errors = {}
 
-  if (!R.equals(values.password, values.confirm_password)) {
+  if (!equals(values.password, values.confirm_password)) {
     errors.confirm_password = 'Password do not match'
   }
   return errors

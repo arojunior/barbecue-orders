@@ -1,9 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Grid, Row, Col, Jumbotron, Alert} from 'react-bootstrap'
+import {Grid, Row, Col, Jumbotron} from 'react-bootstrap'
 import {compose, withProps, withHandlers} from 'recompose'
 
 import Form from './components/Form'
+import Alert from '../../components/Alert'
 import {newUser} from '../../modules/Users/actions'
 
 const styles = {
@@ -26,10 +27,7 @@ const Container = ({handleSubmit, styles, error}) =>
             <Form onSubmit={handleSubmit} />
           </Col>
         </Row>
-        {error &&
-          <Alert bsStyle="danger">
-            {error}
-          </Alert>}
+        {error && <Alert bsStyle="danger" content={error} />}
       </Jumbotron>
     </Col>
   </Grid>

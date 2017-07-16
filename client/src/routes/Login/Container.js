@@ -1,7 +1,8 @@
 import React from 'react'
-import {Grid, Row, Col, Jumbotron, Alert} from 'react-bootstrap'
+import {Grid, Row, Col, Jumbotron} from 'react-bootstrap'
 
 import Form from './components/Form'
+import Alert from '../../components/Alert'
 
 export default ({handleSubmit, styles, error}) =>
   <Grid style={styles.container}>
@@ -17,10 +18,7 @@ export default ({handleSubmit, styles, error}) =>
             <Form onSubmit={handleSubmit} />
           </Col>
         </Row>
-        {error &&
-          <Alert bsStyle="danger">
-            {error}
-          </Alert>}
+        {error && <Alert bsStyle="danger" content={error} />}
       </Jumbotron>
     </Col>
   </Grid>
