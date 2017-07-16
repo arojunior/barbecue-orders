@@ -1,9 +1,11 @@
 import React from 'react'
+import Table from './components/Table'
 
 const Dashboard = () => {
   return (
     <div>
-      Now you are in <code>src/routes/Dashboard/index.js</code>
+      <h3>My companies</h3>
+      <Table />
     </div>
   )
 }
