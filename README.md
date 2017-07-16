@@ -25,7 +25,13 @@ docker-compose up -d
 
 ### Manual Instalation
 
-Under construction.
+To run this application without Docker, you gonna need PHP 5.6+, Composer and Mysql installed locally.
+
+1 - import `/api/database.sql` in you local Mysql
+2 - go to /api and run `composer install` to install the dependencies
+3 - change database connection configuration in `/api/src/Models/App.php`
+4 - then you can run the API going to `/api/public` with `php -S localhost:8000`
+5 - go to `/client/build` and run the Client with `php -S localhost:3000`
 
 # Requeriments
 
@@ -35,19 +41,19 @@ Under construction.
 - [x] It should show a warning if user try to send the form empty
 
 ### New account
-- [ ] Everyone can create an account
-- [ ] All form fields are required
-- [ ] It should validate duplicated e-mails
+- [x] Everyone can create an account
+- [x] All form fields are required
+- [x] It should validate duplicated e-mails
 
 ### Menu
 - [ ] The menu should be shared with all authenticated pages
 
 ### Pages
-- [ ] Authentication is not required to Login and New account page
-- [ ] Authentication is required to Dashboard, New company, New order, My orders and My account page
+- [x] Authentication is not required to Login and New account page
+- [x] Authentication is required to Dashboard, New company, New order, My orders and My account page
 
 ### Dashboard
-- [ ] User should land in `Dashboard` page after Login
+- [x] User should land in `Dashboard` page after Login
 - [ ] Companies list should has a link in quantity column to go to orders page
 
 ### New company
