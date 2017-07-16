@@ -27,11 +27,11 @@ docker-compose up -d
 
 To run this application without Docker, you gonna need PHP 5.6+, Composer and Mysql installed locally.
 
-1 - import `/api/database.sql` in you local Mysql
-2 - go to /api and run `composer install` to install the dependencies
-3 - change database connection configuration in `/api/src/Models/App.php`
-4 - then you can run the API going to `/api/public` with `php -S localhost:8000`
-5 - go to `/client/build` and run the Client with `php -S localhost:3000`
+- 1 - import `/api/database.sql` in you local Mysql
+- 2 - go to /api and run `composer install` to install the dependencies
+- 3 - change database connection configuration in `/api/src/Models/App.php`
+- 4 - then you can run the API going to `/api/public` with `php -S localhost:8000`
+- 5 - go to `/client/build` and run the Client with `php -S localhost:3000`
 
 # Requeriments
 
