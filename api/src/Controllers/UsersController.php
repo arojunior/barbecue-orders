@@ -15,7 +15,7 @@ class UsersController extends AppController
         parent::__construct();
     }
 
-    public function add($request, $response, $args)
+    public function add($request, $response)
     {
         $data = $request->getParsedBody();
         $user = $this->user->create($data);

@@ -21,9 +21,7 @@ class UsersRepository implements UsersInterface
             return $this->errorHandler->emit('USER_ALREADY_EXISTS');
         }
 
-        if (isset($data['password_confirm'])) {
-            unset($data['password_confirm']);
-        }
+        $data = $this->user->checkFormFields($data);
 
         $this->user->save($this->user->hashPassword($data));
         return ['id' => $this->user->lastSavedId()];

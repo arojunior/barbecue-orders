@@ -21,4 +21,12 @@ class User extends App
         );
     }
 
+    public function checkFormFields($data)
+    {
+        return (isset($data['password_confirm'])
+                ? array_diff_key($data, array_flip(['password_confirm']))
+                : $data
+            );
+    }
+
 }
