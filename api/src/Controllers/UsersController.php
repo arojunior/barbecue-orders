@@ -12,19 +12,18 @@ class UsersController extends AppController
     public function __construct($repository)
     {
         $this->user = $repository;
+        parent::__construct();
     }
 
     public function add($request, $response, $args)
     {
         $data = $request->getParsedBody();
-        $id = $this->user->create($data);
+        $user = $this->user->create($data);
 
-        if ( ! $id) {
-            return $response->withStatus($this->user->error['code'])
-                            ->withJson(['error' => $this->user->error]);
-        }
-
-        return $response->withJson(['id' => $id]);
+        return ($user['error']
+                ? $this->errorHandler->toJson($user['error'], $response)
+                : $response->withJson(['id' => $user['id']])
+            );
     }
 
 }

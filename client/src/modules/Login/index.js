@@ -16,11 +16,12 @@ export default handleActions(
     [LOGIN_SUCCESS]: (state, action) => ({
       ...state,
       data: action.payload.data,
+      error: null,
       isLogged: true
     }),
     [LOGIN_ERROR]: (state, action) => ({
       ...state,
-      error: action.payload.data.error.msg
+      error: action.payload.data.msg
     })
   },
   initialState

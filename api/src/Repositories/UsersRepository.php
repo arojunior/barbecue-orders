@@ -8,7 +8,6 @@ class UsersRepository implements UsersInterface
 
     protected $user;
     protected $errorHandler;
-    public $error;
 
     public function __construct($model, $errorHandler)
     {
@@ -18,12 +17,11 @@ class UsersRepository implements UsersInterface
 
     public function create($data)
     {
-        if (self::checkIfUserExists($data)) {
-            $this->error = $this->errorHandler->emit('USER_ALREADY_EXISTS');
-            return false;
+        if (self::checkIfExists($data)) {
+            return $this->errorHandler->emit('USER_ALREADY_EXISTS');
         }
 
-        $this->user->save(self::hashPassword($data));
+        $this->user->save($this->user->hashPassword($data));
         return $this->user->lastSavedId();
     }
 
@@ -32,18 +30,23 @@ class UsersRepository implements UsersInterface
         return $this->user->findOne($id);
     }
 
-    private function checkIfUserExists($data)
+    public function login($data)
+    {
+        if ( ! self::checkIfExists($data)) {
+            return $this->errorHandler->emit('LOGIN_ERROR');
+        }
+
+        if ( ! $this->user->validatePassword($data)) {
+            return $this->errorHandler->emit('LOGIN_ERROR');
+        }
+
+        return $this->user->fetch();
+    }
+
+    public function checkIfExists($data)
     {
         $email = $data['email'];
         return $this->user->exists($email);
-    }
-
-    private function hashPassword($data)
-    {
-        return array_merge(
-            $data,
-            ['password' => password_hash($data['password'], PASSWORD_DEFAULT)]
-        );
     }
 
 }

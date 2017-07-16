@@ -12,13 +12,22 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+$container['errorHandler'] = function ($c) {
+    return new BarbecueOrders\Libs\Errors();
+};
+
 $container['UsersRepository'] = function ($c) {
     $model = new BarbecueOrders\Models\User();
-    $errorHandler = new BarbecueOrders\Libs\Errors();
+    $errorHandler = $c->get('errorHandler');
     return new BarbecueOrders\Repositories\UsersRepository($model, $errorHandler);
 };
 
 $container['\BarbecueOrders\Controllers\UsersController'] = function ($c) {
     $repository = $c->get('UsersRepository');
     return new BarbecueOrders\Controllers\UsersController($repository);
+};
+
+$container['\BarbecueOrders\Controllers\LoginController'] = function ($c) {
+    $repository = $c->get('UsersRepository');
+    return new BarbecueOrders\Controllers\LoginController($repository);
 };
