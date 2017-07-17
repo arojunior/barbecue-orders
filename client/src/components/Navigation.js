@@ -16,10 +16,10 @@ const Navigation = () =>
       <LinkContainer to="/dashboard">
         <NavItem eventKey={1}>Dashboard</NavItem>
       </LinkContainer>
-      <LinkContainer to="/companies/add">
+      <LinkContainer to="/companies">
         <NavItem eventKey={2}>New company</NavItem>
       </LinkContainer>
-      <LinkContainer to="/orders/add">
+      <LinkContainer to="/orders">
         <NavItem eventKey={3}>New order</NavItem>
       </LinkContainer>
       <LinkContainer to="/users">
