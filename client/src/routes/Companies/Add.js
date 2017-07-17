@@ -1,11 +1,13 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import {Row, Col} from 'react-bootstrap'
 import {compose, withHandlers} from 'recompose'
 
 import Form from './components/Form'
-import {newCompany} from '../../modules/Companies/actions'
+import Alert from '../../components/Alert'
+import {companiesAction} from '../../modules/Companies'
 
-const CompanyAdd = ({handleSubmit}) =>
+const CompanyAdd = ({handleSubmit, error}) =>
   <div>
     <Row bsClass="text-center">
       <h3>New company</h3>
@@ -15,10 +17,14 @@ const CompanyAdd = ({handleSubmit}) =>
         <Form onSubmit={handleSubmit} />
       </Col>
     </Row>
+    {error && <Alert bsStyle="danger" content={error} />}
   </div>
 
 export default compose(
+  connect(state => ({
+    error: state.error
+  })),
   withHandlers({
-    handleSubmit: props => values => newCompany(values)
+    handleSubmit: ({dispatch}) => values => dispatch(companiesAction(values))
   })
 )(CompanyAdd)
