@@ -67,5 +67,5 @@ To run this application without Docker, you gonna need PHP 5.6+, Composer and My
 - [ ] Users can view orders information and cancel an order whenever they want
 
 ### My account
-- [ ] User can edit this profile everytime he want
-- [ ] It should validate duplicated e-mails, as `New account` page
+- [x] User can edit this profile everytime he want
+- [x] It should validate duplicated e-mails, as `New account` page
