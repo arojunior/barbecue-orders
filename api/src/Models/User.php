@@ -23,10 +23,26 @@ class User extends App
 
     public function checkFormFields($data)
     {
-        return (isset($data['password_confirm'])
-                ? array_diff_key($data, array_flip(['password_confirm']))
-                : $data
-            );
+        if (isset($data['password_confirm'])) {
+            unset($data['password_confirm']);
+        }
+
+        if (empty($data['password'])) {
+            unset($data['password']);
+        }
+
+        return $data;
+    }
+
+    public function checkEmailEdit($data)
+    {
+        return !empty($this->query("
+                    SELECT email
+                    FROM users
+                    WHERE
+                        email='".$data['email']."' AND
+                        id <> ".$data['id']."
+                "));
     }
 
 }

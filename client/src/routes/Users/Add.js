@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Grid, Row, Col, Jumbotron} from 'react-bootstrap'
 import {compose, withProps, withHandlers} from 'recompose'
 
-import Form from './components/Form'
+import Form from './components/AddForm'
 import Alert from '../../components/Alert'
 import {newUserAction} from '../../modules/Users'
 
@@ -13,7 +13,7 @@ const styles = {
   }
 }
 
-const UserAdd = ({handleSubmit, styles, error}) =>
+const UserAdd = ({handleSubmit, styles, initialValues = {}, error}) =>
   <Grid style={styles.container}>
     <Col md={8} mdOffset={2}>
       <Jumbotron>
@@ -24,7 +24,7 @@ const UserAdd = ({handleSubmit, styles, error}) =>
         </Row>
         <Row>
           <Col md={10}>
-            <Form onSubmit={handleSubmit} />
+            <Form onSubmit={handleSubmit} initialValues={initialValues} />
           </Col>
         </Row>
         {error && <Alert bsStyle="danger" content={error} />}
@@ -40,6 +40,6 @@ export default compose(
     styles
   }),
   withHandlers({
-    handleSubmit: props => values => props.dispatch(newUserAction(values))
+    handleSubmit: ({dispatch}) => values => dispatch(newUserAction(values))
   })
 )(UserAdd)

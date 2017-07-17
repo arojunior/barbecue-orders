@@ -1,5 +1,4 @@
 <?php
-
 namespace BarbecueOrders\Controllers;
 
 use BarbecueOrders\Controllers\AppController;
@@ -18,11 +17,30 @@ class UsersController extends AppController
     public function add($request, $response)
     {
         $data = $request->getParsedBody();
+
         $user = $this->user->create($data);
 
         return ($user['error']
                 ? $this->errorHandler->toJson($user['error'], $response)
-                : $response->withJson(['id' => $user['id']])
+                : $response->withJson([
+                    'id' => $user['id'],
+                    'email' => $data['email']
+                ])
+            );
+    }
+
+    public function edit($request, $response)
+    {
+        $data = $request->getParsedBody();
+
+        $user = $this->user->update($data);
+
+        return ($user['error']
+                ? $this->errorHandler->toJson($user['error'], $response)
+                : $response->withJson([
+                    'id' => $user['id'],
+                    'email' => $data['email']
+                ])
             );
     }
 

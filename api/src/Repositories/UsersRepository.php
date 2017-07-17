@@ -27,6 +27,22 @@ class UsersRepository implements UsersInterface
         return ['id' => $this->user->lastSavedId()];
     }
 
+    public function update($data)
+    {
+        $data = $this->user->checkFormFields($data);
+
+        if ($this->user->checkEmailEdit($data)) {
+            return $this->errorHandler->emit('USER_ALREADY_EXISTS');
+        }
+
+        if ($data['password']) {
+            $data = $this->user->hashPassword($data);
+        }
+
+        $this->user->save($data);
+        return ['id' => $this->user->lastSavedId()];
+    }
+
     public function find($id)
     {
         return $this->user->findOne($id);

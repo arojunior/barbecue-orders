@@ -7,7 +7,7 @@ import {equals} from 'ramda'
 import fieldConfig from '../../../components/FormConfig'
 
 const Form = props => {
-  const {handleSubmit, pristine, submitting} = props
+  const {handleSubmit, pristine, invalid, submitting} = props
   return (
     <form onSubmit={handleSubmit} className="form-horizontal">
       <Field
@@ -39,7 +39,7 @@ const Form = props => {
           <Button
             type="submit"
             bsStyle="primary"
-            disabled={pristine || submitting}>
+            disabled={pristine || invalid || submitting}>
             Create account
           </Button>
         </FormGroup>
