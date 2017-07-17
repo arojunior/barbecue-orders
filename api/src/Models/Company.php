@@ -11,13 +11,15 @@ class Company extends App
     public function companiesAndOrders()
     {
         return $this->query("
-            SELECT
-                companies.name,
-                companies.eni,
-                count(orders.id) as 'orders'
-            FROM companies
-            INNER JOIN orders ON companies.id = orders.company_id
-            GROUP BY orders.company_i
+                SELECT
+                    companies.id,
+                    companies.name,
+                    companies.eni,
+                    count(orders.id) as 'orders'
+                FROM companies
+                LEFT JOIN orders ON companies.id = orders.company_id
+                GROUP BY companies.id
+                ORDER BY 'orders'
             ");
     }
 }

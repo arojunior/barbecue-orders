@@ -1,22 +1,39 @@
 import React from 'react'
 import {Table} from 'react-bootstrap'
 
-export default () =>
-  <Table striped bordered condensed hover>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>ENI</th>
-        <th>Orders</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Taller</td>
-        <td>11.111.111/1111-11</td>
-        <td>
-          <a href="#">1</a>
-        </td>
-      </tr>
-    </tbody>
-  </Table>
+export default ({companies}) => {
+  const rows = companies
+    ? companies.map(company => {
+        return (
+          <tr key={company.id}>
+            <td>
+              {company.name}
+            </td>
+            <td>
+              {company.eni}
+            </td>
+            <td>
+              <a href="#">
+                {company.orders}
+              </a>
+            </td>
+          </tr>
+        )
+      })
+    : null
+
+  return (
+    <Table striped bordered condensed hover>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>ENI</th>
+          <th>Orders</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows}
+      </tbody>
+    </Table>
+  )
+}

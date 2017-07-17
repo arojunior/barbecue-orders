@@ -28,7 +28,7 @@ class CompaniesController extends AppController
 
     public function orders($request, $response)
     {
-        return $response->withJson($repository->findCompaniesAndOrders());
+        return $response->withJson($this->company->findCompaniesAndOrders());
     }
 
 }

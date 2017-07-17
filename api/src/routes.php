@@ -12,4 +12,4 @@ $app->post('/login', '\BarbecueOrders\Controllers\LoginController:index');
 $app->post('/users', '\BarbecueOrders\Controllers\UsersController:add');
 $app->put('/users/{id}', '\BarbecueOrders\Controllers\UsersController:edit');
 $app->post('/companies', '\BarbecueOrders\Controllers\CompaniesController:add');
-$app->post('/companies/orders', '\BarbecueOrders\Controllers\CompaniesController:orders');
+$app->get('/companies/orders', '\BarbecueOrders\Controllers\CompaniesController:orders');

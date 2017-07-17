@@ -1,15 +1,30 @@
 import React from 'react'
-import Table from './components/Table'
+import {compose, lifecycle} from 'recompose'
+import {connect} from 'react-redux'
 
-const Dashboard = () => {
+import Table from './components/Table'
+import {getCompaniesAndOrders} from '../../modules/Companies'
+
+const Dashboard = ({companies}) => {
   return (
     <div>
       <h3>My companies</h3>
-      <Table />
+      <Table companies={companies} />
     </div>
   )
 }
 
+const DashboardComponent = compose(
+  connect(state => ({
+    companies: state.companies
+  })),
+  lifecycle({
+    componentDidMount() {
+      this.props.dispatch(getCompaniesAndOrders())
+    }
+  })
+)(Dashboard)
+
 export default {
-  component: Dashboard
+  component: DashboardComponent
 }
