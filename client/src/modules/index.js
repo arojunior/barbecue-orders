@@ -1,11 +1,9 @@
 import boot from 'redux-boot'
 import {reducer as formReducer} from 'redux-form'
-import {applyMiddleware, compose} from 'redux'
 import {getState} from 'redux-localstore'
-import fetchMiddleware from 'fetch-middleware'
-import thunkMiddleware from 'redux-thunk'
 import {isEmpty} from 'ramda'
 
+import Router from './Router'
 import Login from './Login'
 import Users from './Users'
 
@@ -19,10 +17,10 @@ const formModule = {
 }
 
 const enhancer = {
-  enhancer: compose(applyMiddleware(fetchMiddleware, thunkMiddleware), devTools)
+  enhancer: devTools
 }
 
-const modules = [formModule, Login, Users, enhancer]
+const modules = [Router, formModule, Login, Users, enhancer]
 
 const localStore = getState()
 

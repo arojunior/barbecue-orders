@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import {compose, withHandlers, withProps} from 'recompose'
 
 import LoginContainer from './Container'
-import {sendLogin} from '../../modules/Login/actions'
+import {loginAction} from '../../modules/Login'
 
 const styles = {
   container: {
@@ -19,6 +19,6 @@ export default compose(
     styles
   }),
   withHandlers({
-    handleSubmit: props => values => props.dispatch(sendLogin(values))
+    handleSubmit: props => values => props.dispatch(loginAction(values))
   })
 )(LoginContainer)

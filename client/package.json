@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "fetch-middleware": "^1.1.0",
     "ramda": "^0.24.1",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.1",
@@ -59,8 +58,7 @@
     "redux-form": "^6.5.0",
     "redux-form-field-wrapper": "^1.1.0",
     "redux-localstore": "^0.2.1",
-    "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0"
+    "redux-promise": "^0.5.3"
   },
   "scripts": {
     "start": "node scripts/start.js",
