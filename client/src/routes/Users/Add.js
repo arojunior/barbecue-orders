@@ -5,7 +5,7 @@ import {compose, withProps, withHandlers} from 'recompose'
 
 import Form from './components/Form'
 import Alert from '../../components/Alert'
-import {newUser} from '../../modules/Users/actions'
+import {newUserAction} from '../../modules/Users'
 
 const styles = {
   container: {
@@ -13,7 +13,7 @@ const styles = {
   }
 }
 
-const Container = ({handleSubmit, styles, error}) =>
+const UserAdd = ({handleSubmit, styles, error}) =>
   <Grid style={styles.container}>
     <Col md={8} mdOffset={2}>
       <Jumbotron>
@@ -40,6 +40,6 @@ export default compose(
     styles
   }),
   withHandlers({
-    handleSubmit: props => values => props.dispatch(newUser(values))
+    handleSubmit: props => values => props.dispatch(newUserAction(values))
   })
-)(Container)
+)(UserAdd)

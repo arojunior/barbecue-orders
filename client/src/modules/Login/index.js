@@ -2,15 +2,15 @@ import api from '../service'
 import {createAction} from 'redux-actions'
 import {redirect} from '../Router'
 
-const REQUEST_API = 'modules/Login/REQUEST_API'
+export const LOGIN_REQUEST_API = 'modules/Login/REQUEST_API'
 
-export const loginAction = createAction(REQUEST_API, values => {
+export const loginAction = createAction(LOGIN_REQUEST_API, values => {
   return api.post('/login', values)
 })
 
 export default {
   reducer: {
-    [REQUEST_API]: {
+    [LOGIN_REQUEST_API]: {
       next: (state, action) => ({
         ...state,
         user: action.payload.data,
@@ -24,7 +24,7 @@ export default {
     }
   },
   middleware: {
-    [REQUEST_API]: ({dispatch}) => next => action => {
+    [LOGIN_REQUEST_API]: ({dispatch}) => next => action => {
       const result = next(action)
 
       if (!result.error) {

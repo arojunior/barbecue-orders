@@ -1,15 +1,9 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import renderField, {required} from 'redux-form-field-wrapper'
+import {required} from 'redux-form-field-wrapper'
 import {Col, Button, FormGroup} from 'react-bootstrap'
 
-const fieldConfig = {
-  divClass: 'form-group',
-  inputClass: 'col-md-9',
-  labelClass: 'col-md-3 control-label',
-  className: 'form-control',
-  component: renderField
-}
+import fieldConfig from '../../../components/FormConfig'
 
 const Form = props => {
   const {handleSubmit, pristine, submitting} = props
