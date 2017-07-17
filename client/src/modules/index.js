@@ -4,8 +4,10 @@ import {getState} from 'redux-localstore'
 import {isEmpty} from 'ramda'
 
 import Router from './Router'
+import Errors from './Errors'
 import Login from './Login'
 import Users from './Users'
+import Companies from './Companies'
 
 const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f
 
@@ -20,7 +22,7 @@ const enhancer = {
   enhancer: devTools
 }
 
-const modules = [Router, formModule, Login, Users, enhancer]
+const modules = [Router, formModule, Errors, Login, Users, Companies, enhancer]
 
 const localStore = getState()
 
