@@ -22,7 +22,10 @@ class LoginController extends AppController
 
         return ($user['error']
                 ? $this->errorHandler->toJson($user['error'], $response)
-                : $response->withJson(['id' => $user['id']])
+                : $response->withJson([
+                    'id' => $user['id'],
+                    'email' => $data['email']
+                ])
             );
     }
 }

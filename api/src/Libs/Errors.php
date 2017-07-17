@@ -10,6 +10,12 @@ class Errors
                     'msg' => 'This user already exists'
                 ]
             ],
+            'COMPANY_ALREADY_EXISTS' => [
+                'error' => [
+                    'code' => 409,
+                    'msg' => 'This company already exists'
+                ]
+            ],
             'LOGIN_ERROR' => [
                 'error' => [
                     'code' => 401,
