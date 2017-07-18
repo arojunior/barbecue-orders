@@ -8,6 +8,7 @@ import Errors from './Errors'
 import Login from './Login'
 import Users from './Users'
 import Companies from './Companies'
+import Products from './Products'
 
 const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f
 
@@ -22,7 +23,16 @@ const enhancer = {
   enhancer: devTools
 }
 
-const modules = [Router, formModule, Errors, Login, Users, Companies, enhancer]
+const modules = [
+  Router,
+  formModule,
+  Errors,
+  Login,
+  Users,
+  Companies,
+  Products,
+  enhancer
+]
 
 const localStore = getState()
 

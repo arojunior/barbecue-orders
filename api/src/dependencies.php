@@ -12,6 +12,9 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+/*
+* Services
+*/
 $container['errorHandler'] = function ($c) {
     return new BarbecueOrders\Libs\Errors();
 };
@@ -28,6 +31,14 @@ $container['CompaniesRepository'] = function ($c) {
     return new BarbecueOrders\Repositories\CompaniesRepository($model, $errorHandler);
 };
 
+$container['ProductsRepository'] = function ($c) {
+    $model = new BarbecueOrders\Models\Product();
+    return new BarbecueOrders\Repositories\ProductsRepository($model);
+};
+
+/*
+* Controllers as Services
+*/
 $container['\BarbecueOrders\Controllers\UsersController'] = function ($c) {
     $repository = $c->get('UsersRepository');
     return new BarbecueOrders\Controllers\UsersController($repository);
@@ -36,6 +47,11 @@ $container['\BarbecueOrders\Controllers\UsersController'] = function ($c) {
 $container['\BarbecueOrders\Controllers\CompaniesController'] = function ($c) {
     $repository = $c->get('CompaniesRepository');
     return new BarbecueOrders\Controllers\CompaniesController($repository);
+};
+
+$container['\BarbecueOrders\Controllers\ProductsController'] = function ($c) {
+    $repository = $c->get('ProductsRepository');
+    return new BarbecueOrders\Controllers\ProductsController($repository);
 };
 
 $container['\BarbecueOrders\Controllers\LoginController'] = function ($c) {
