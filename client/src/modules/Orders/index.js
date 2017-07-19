@@ -1,6 +1,6 @@
 import {createAction} from 'redux-actions'
 import {merge} from 'ramda'
-//import api from '../service'
+import api from '../service'
 import {redirect} from '../Router'
 
 const ADD_PRODUCT = 'modules/Orders/ADD_PRODUCT'
@@ -14,7 +14,7 @@ export const submitOrder = createAction(
   SUBMIT_ORDER,
   ({order_items, order_company}) => {
     const values = {order_items, order_company}
-    console.log(values)
+    return api.post('/orders', values)
   }
 )
 export const changeCompany = createAction(ORDER_COMPANY)

@@ -14,3 +14,4 @@ $app->put('/users/{id}', '\BarbecueOrders\Controllers\UsersController:edit');
 $app->post('/companies', '\BarbecueOrders\Controllers\CompaniesController:add');
 $app->get('/companies/orders', '\BarbecueOrders\Controllers\CompaniesController:orders');
 $app->get('/products', '\BarbecueOrders\Controllers\ProductsController:index');
+$app->post('/orders', '\BarbecueOrders\Controllers\OrdersController:add');
