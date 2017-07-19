@@ -1,2 +1,7 @@
-import React from 'react'
-export default () => <div />
+export default {
+  getComponent(nextState, cb) {
+    require.ensure([], require => {
+      cb(null, require('./AddOrders').default)
+    })
+  }
+}
