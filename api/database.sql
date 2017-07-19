@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.18)
 # Base de Dados: mydb
-# Tempo de Geração: 2017-07-17 22:23:07 +0000
+# Tempo de Geração: 2017-07-18 16:36:47 +0000
 # ************************************************************
 
 
@@ -40,7 +40,9 @@ LOCK TABLES `companies` WRITE;
 
 INSERT INTO `companies` (`id`, `name`, `eni`, `created`, `modified`)
 VALUES
-	(1,'JUNIOR OLIVEIRA','11.111.111/1111-11','2017-07-17 01:56:20',NULL);
+	(1,'JUNIOR OLIVEIRA','11.111.111/1111-11','2017-07-17 01:56:20',NULL),
+	(4,'NomenaLista.net','00000000000','2017-07-17 23:22:13',NULL),
+	(5,'Taller Web Solutions','1111111','2017-07-17 23:50:46',NULL);
 
 /*!40000 ALTER TABLE `companies` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -91,6 +93,22 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+
+INSERT INTO `products` (`id`, `description`)
+VALUES
+	(1,'Beer'),
+	(2,'Meat'),
+	(3,'Soda'),
+	(4,'Garlic Bread'),
+	(5,'Charcoal'),
+	(6,'Napkin'),
+	(7,'Barbecue Grill'),
+	(8,'Lighter fluid');
+
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump da tabela users
@@ -109,15 +127,6 @@ CREATE TABLE `users` (
   KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-
-INSERT INTO `users` (`id`, `email`, `password`, `created`, `modified`)
-VALUES
-	(12,'arojunior@gmail.com','$2y$10$tIfKS1RTXWxmsfktuEj5c.G7JRLakEDrwDnyriGALelyqCqisG.C6','2017-07-17 18:51:42','2017-07-17 22:13:51');
-
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 
