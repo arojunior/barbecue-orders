@@ -4,6 +4,7 @@ import {Provider} from 'react-redux'
 import storeSynchronize from 'redux-localstore'
 import {Router, browserHistory} from 'react-router'
 
+import registerServiceWorker from './registerServiceWorker'
 import routes from './routes'
 import app from './modules'
 
@@ -17,3 +18,5 @@ app.then(({store}) => {
     document.getElementById('root')
   )
 })
+
+registerServiceWorker()
