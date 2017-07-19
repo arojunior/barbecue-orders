@@ -2,8 +2,8 @@ import api from '../service'
 import {createAction} from 'redux-actions'
 import {redirect} from '../Router'
 
-export const NEW_COMPANY_REQUEST = 'modules/Companies/API_REQUEST_NEW'
-export const COMPANY_ORDERS_REQUEST = 'modules/Companies/API_REQUEST_ORDERS'
+const NEW_COMPANY_REQUEST = 'modules/Companies/API_REQUEST_NEW'
+const COMPANY_ORDERS_REQUEST = 'modules/Companies/API_REQUEST_ORDERS'
 
 export const companiesAction = createAction(NEW_COMPANY_REQUEST, values => {
   return api.post('/companies', values)

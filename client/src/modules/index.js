@@ -9,6 +9,7 @@ import Login from './Login'
 import Users from './Users'
 import Companies from './Companies'
 import Products from './Products'
+import Orders from './Orders'
 
 const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f
 
@@ -31,6 +32,7 @@ const modules = [
   Users,
   Companies,
   Products,
+  Orders,
   enhancer
 ]
 
@@ -38,7 +40,8 @@ const localStore = getState()
 
 const defaultState = {
   isLogged: false,
-  error: null
+  error: null,
+  order_items: []
 }
 
 export default boot(isEmpty(localStore) ? defaultState : localStore, modules)

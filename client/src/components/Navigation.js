@@ -12,7 +12,7 @@ const Navigation = () =>
         </Link>
       </Navbar.Brand>
     </Navbar.Header>
-    <Nav>
+    <Nav pullRight>
       <LinkContainer to="/dashboard">
         <NavItem eventKey={1}>Dashboard</NavItem>
       </LinkContainer>

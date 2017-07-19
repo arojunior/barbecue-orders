@@ -1,7 +1,7 @@
 import Layout from '../layouts'
 
 import Dashboard from './Dashboard'
-//import Orders from './Orders'
+import Orders from './Orders'
 import Login from './Login'
 import Companies from './Companies'
 import Users, {MyAccount} from './Users'
@@ -26,5 +26,10 @@ export default [
     path: '/users',
     component: Layout,
     indexRoute: MyAccount
+  },
+  {
+    path: '/orders',
+    component: Layout,
+    indexRoute: Orders
   }
 ]
