@@ -5,3 +5,10 @@ export default {
     })
   }
 }
+export const OrdersByCompany = {
+  getComponent(nextState, cb) {
+    require.ensure([], require => {
+      cb(null, require('./Orders').default)
+    })
+  }
+}

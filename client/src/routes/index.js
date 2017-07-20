@@ -3,7 +3,7 @@ import Layout from '../layouts'
 import Dashboard from './Dashboard'
 import Orders from './Orders'
 import Login from './Login'
-import Companies from './Companies'
+import Companies, {OrdersByCompany} from './Companies'
 import Users, {MyAccount} from './Users'
 
 export default [
@@ -22,6 +22,12 @@ export default [
     component: Layout,
     indexRoute: Companies
   },
+  {
+    path: '/companies/:id/orders',
+    component: Layout,
+    indexRoute: OrdersByCompany
+  },
+
   {
     path: '/users',
     component: Layout,

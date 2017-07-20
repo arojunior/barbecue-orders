@@ -1,5 +1,6 @@
 import React from 'react'
 import {Table} from 'react-bootstrap'
+import {Link} from 'react-router'
 
 export default ({companies}) => {
   const rows = companies
@@ -13,9 +14,9 @@ export default ({companies}) => {
               {company.eni}
             </td>
             <td>
-              <a href="#">
+              <Link to={`/companies/${company.id}/orders`}>
                 {company.orders}
-              </a>
+              </Link>
             </td>
           </tr>
         )

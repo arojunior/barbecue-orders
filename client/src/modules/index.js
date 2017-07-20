@@ -41,7 +41,8 @@ const localStore = getState()
 const defaultState = {
   isLogged: false,
   error: null,
-  order_items: []
+  order_items: [],
+  company_orders: []
 }
 
 export default boot(isEmpty(localStore) ? defaultState : localStore, modules)

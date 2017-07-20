@@ -4,6 +4,7 @@ import {redirect} from '../Router'
 
 const NEW_COMPANY_REQUEST = 'modules/Companies/API_REQUEST_NEW'
 const COMPANY_ORDERS_REQUEST = 'modules/Companies/API_REQUEST_ORDERS'
+const ORDERS_BY_COMPANY = 'modules/Companies/ORDERS'
 
 export const companiesAction = createAction(NEW_COMPANY_REQUEST, values => {
   return api.post('/companies', values)
@@ -16,6 +17,10 @@ export const getCompaniesAndOrders = createAction(
   }
 )
 
+export const getOrdersByCompany = createAction(ORDERS_BY_COMPANY, id => {
+  return api.get(`/companies/${id}/orders`)
+})
+
 export default {
   reducer: {
     [NEW_COMPANY_REQUEST]: {
@@ -27,6 +32,10 @@ export default {
     [COMPANY_ORDERS_REQUEST]: (state, action) => ({
       ...state,
       companies: action.payload.data
+    }),
+    [ORDERS_BY_COMPANY]: (state, action) => ({
+      ...state,
+      company_orders: action.payload.data
     })
   },
   middleware: {

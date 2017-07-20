@@ -31,4 +31,12 @@ class CompaniesController extends AppController
         return $response->withJson($this->company->findCompaniesAndOrders());
     }
 
+    public function ordersByCompany($request, $response)
+    {
+        $route = $request->getAttribute('route');
+        $id = $route->getArgument('id');
+
+        return $response->withJson($this->company->findOrdersByCompany($id));
+    }
+
 }

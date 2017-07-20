@@ -30,6 +30,11 @@ class CompaniesRepository implements CompaniesInterface
         return $this->company->companiesAndOrders();
     }
 
+    public function findOrdersByCompany(int $id) : array
+    {
+        return $this->company->ordersByCompany($id);
+    }
+
     public function checkIfExists($data)
     {
         return $this->company->exists(['cnpj' => $data['cnpj']]);

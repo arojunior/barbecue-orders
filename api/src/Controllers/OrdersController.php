@@ -24,4 +24,14 @@ class OrdersController extends AppController
         return $response->withJson(['id' => $order]);
     }
 
+    public function delete($request, $response)
+    {
+        $route = $request->getAttribute('route');
+        $id = $route->getArgument('id');
+
+        $this->order->delete($id);
+
+        return $response->withJson(['id' => $id]);
+    }
+
 }

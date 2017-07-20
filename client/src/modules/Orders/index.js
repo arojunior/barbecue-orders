@@ -2,10 +2,12 @@ import {createAction} from 'redux-actions'
 import {merge} from 'ramda'
 import api from '../service'
 import {redirect} from '../Router'
+import {getOrdersByCompany} from '../Companies'
 
 const ADD_PRODUCT = 'modules/Orders/ADD_PRODUCT'
 const DELETE_PRODUCT = 'modules/Orders/DELETE_PRODUCT'
 const SUBMIT_ORDER = 'modules/Orders/SUBMIT'
+const CANCEL_ORDER = 'modules/Orders/CANCEL'
 const ORDER_COMPANY = 'modules/Orders/CHANGE_COMPANY'
 
 export const addProduct = createAction(ADD_PRODUCT)
@@ -17,6 +19,9 @@ export const submitOrder = createAction(
     return api.post('/orders', values)
   }
 )
+export const cancelOrder = createAction(CANCEL_ORDER, id => {
+  return api.delete(`/orders/${id}`)
+})
 export const changeCompany = createAction(ORDER_COMPANY)
 
 export default {
@@ -58,6 +63,12 @@ export default {
       const result = await next(action)
       dispatch(redirect('/dashboard'))
       return result
+    },
+    [CANCEL_ORDER]: store => next => async action => {
+      await next(action)
+      const id = store.getState().company_orders.company.id
+
+      return store.dispatch(getOrdersByCompany(id))
     }
   }
 }

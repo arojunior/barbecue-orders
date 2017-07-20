@@ -24,6 +24,13 @@ class OrdersRepository implements OrdersInterface
         return $this->order->lastSavedId();
     }
 
+    public function delete(int $id)
+    {
+        return $this->order->delete([
+            'id' => $id
+        ]);
+    }
+
     public function addItems($order_id, $items)
     {
         $itemsModel = $this->item;

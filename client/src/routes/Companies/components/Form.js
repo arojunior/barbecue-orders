@@ -20,18 +20,23 @@ const Form = props => {
       <Field
         type="text"
         name="eni"
-        placeholder="a.k.a CNPJ in Brazil"
+        placeholder="Employer Identification Number"
         label="ENI"
         validate={required}
         {...fieldConfig}
       />
-      <Col md={5} mdOffset={5}>
+      <Col md={6} mdOffset={4}>
+        * It is validating just brazilian id, a.k.a CNPJ
+      </Col>
+      <br />
+      <br />
+      <Col md={6} mdOffset={6}>
         <FormGroup>
           <Button
             type="submit"
             bsStyle="primary"
             disabled={pristine || submitting}>
-            Save
+            Save company
           </Button>
         </FormGroup>
       </Col>
