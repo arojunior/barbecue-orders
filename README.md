@@ -12,6 +12,14 @@
 - React
 - Redux
 
+**Dependencies**
+- erikras/redux-form
+- choko-org/redux-boot
+- ramda/ramda
+- arojunior/redux-localstore
+
+It is using `Webpack 2` as module bundler and is `WPA` by default.
+
 # Instalation
 
 ### Docker
@@ -46,7 +54,7 @@ To run this application without Docker, you gonna need PHP 5.6+, Composer and My
 - [x] It should validate duplicated e-mails
 
 ### Menu
-- [ ] The menu should be shared with all authenticated pages
+- [x] The menu should be shared with all authenticated pages
 
 ### Pages
 - [x] Authentication is not required to Login and New account page
@@ -57,11 +65,11 @@ To run this application without Docker, you gonna need PHP 5.6+, Composer and My
 - [ ] Companies list should has a link in quantity column to go to orders page
 
 ### New company
-- [ ] Users can create one or more companies. If they got no companies, they can't create orders
-- [ ] The form should verify if ENI is valid. All fields are required
+- [x] Users can create one or more companies. If they got no companies, they can't create orders
+- [ ] The form should verify if ENI (a.k.a CNPJ in Brazil) is valid. All fields are required
 
 ### New order
-- [ ] Users should select one company to create an order, after that they can select the product and quantity
+- [x] Users should select one company to create an order, after that they can select the product and quantity
 
 ### My orders
 - [ ] Users can view orders information and cancel an order whenever they want
