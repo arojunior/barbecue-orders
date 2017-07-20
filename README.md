@@ -62,7 +62,7 @@ To run this application without Docker, you gonna need PHP 5.6+, Composer and My
 
 ### Dashboard
 - [x] User should land in `Dashboard` page after Login
-- [ ] Companies list should has a link in quantity column to go to orders page
+- [x] Companies list should has a link in quantity column to go to orders page
 
 ### New company
 - [x] Users can create one or more companies. If they got no companies, they can't create orders
@@ -72,7 +72,7 @@ To run this application without Docker, you gonna need PHP 5.6+, Composer and My
 - [x] Users should select one company to create an order, after that they can select the product and quantity
 
 ### My orders
-- [ ] Users can view orders information and cancel an order whenever they want
+- [x] Users can view orders information and cancel an order whenever they want
 
 ### My account
 - [x] User can edit this profile everytime he want
