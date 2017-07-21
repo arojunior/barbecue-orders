@@ -35,7 +35,7 @@ class UsersRepository implements UsersInterface
             return $this->errorHandler->emit('USER_ALREADY_EXISTS');
         }
 
-        if ($data['password']) {
+        if (isset($data['password']) && !empty($data['password'])) {
             $data = $this->user->hashPassword($data);
         }
 
