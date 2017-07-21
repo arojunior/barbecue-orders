@@ -33,7 +33,7 @@ docker-compose up -d
 
 ### Manual Instalation
 
-To run this application without Docker, you gonna need PHP 5.6+, Composer and Mysql installed locally.
+To run this application without Docker, you gonna need PHP 7+, Composer and Mysql installed locally.
 
 - 1 - import `/api/database.sql` in you local Mysql
 - 2 - go to /api and run `composer install` to install the dependencies
