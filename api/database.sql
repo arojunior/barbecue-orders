@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.18)
 # Base de Dados: mydb
-# Tempo de Geração: 2017-07-18 16:36:47 +0000
+# Tempo de Geração: 2017-07-21 02:19:23 +0000
 # ************************************************************
 
 
@@ -40,9 +40,7 @@ LOCK TABLES `companies` WRITE;
 
 INSERT INTO `companies` (`id`, `name`, `eni`, `created`, `modified`)
 VALUES
-	(1,'JUNIOR OLIVEIRA','11.111.111/1111-11','2017-07-17 01:56:20',NULL),
-	(4,'NomenaLista.net','00000000000','2017-07-17 23:22:13',NULL),
-	(5,'Taller Web Solutions','1111111','2017-07-17 23:50:46',NULL);
+	(1,'JUNIOR OLIVEIRA','11.111.111/1111-11','2017-07-17 01:56:20',NULL);
 
 /*!40000 ALTER TABLE `companies` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -73,11 +71,13 @@ DROP TABLE IF EXISTS `orders_items`;
 CREATE TABLE `orders_items` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `order_id` int(11) unsigned DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
+  `product_id` int(11) unsigned DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`),
-  CONSTRAINT `orders_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `product_id` (`product_id`),
+  CONSTRAINT `orders_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `orders_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
