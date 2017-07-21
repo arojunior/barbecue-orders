@@ -15,7 +15,7 @@ class UsersRepository implements UsersInterface
         $this->errorHandler = $errorHandler;
     }
 
-    public function create($data)
+    public function create(array $data) : array
     {
         if (self::checkIfExists($data)) {
             return $this->errorHandler->emit('USER_ALREADY_EXISTS');
@@ -27,7 +27,7 @@ class UsersRepository implements UsersInterface
         return ['id' => $this->user->lastSavedId()];
     }
 
-    public function update($data)
+    public function update(array $data) : array
     {
         $data = $this->user->checkFormFields($data);
 
@@ -43,12 +43,12 @@ class UsersRepository implements UsersInterface
         return ['id' => $this->user->lastSavedId()];
     }
 
-    public function find($id)
+    public function find(int $id) : array
     {
         return $this->user->findOne($id);
     }
 
-    public function login($data)
+    public function login(array $data) : array
     {
         if ( ! self::checkIfExists($data)) {
             return $this->errorHandler->emit('LOGIN_ERROR');

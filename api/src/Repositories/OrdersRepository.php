@@ -31,7 +31,7 @@ class OrdersRepository implements OrdersInterface
         ]);
     }
 
-    public function addItems($order_id, $items)
+    public function addItems(int $order_id, array $items)
     {
         $itemsModel = $this->item;
 
