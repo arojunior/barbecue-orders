@@ -12,8 +12,12 @@ export const companiesAction = createAction(NEW_COMPANY_REQUEST, values => {
 
 export const getCompaniesAndOrders = createAction(
   COMPANY_ORDERS_REQUEST,
-  () => {
-    return api.get('/companies/orders')
+  user => {
+    return api.get('/companies/orders', {
+      headers: {
+        Authorization: 'Bearer ' + user.token
+      }
+    })
   }
 )
 

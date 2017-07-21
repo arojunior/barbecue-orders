@@ -1,6 +1,5 @@
 import api from '../service'
 import {createAction} from 'redux-actions'
-//import {redirect} from '../Router'
 
 const PRODUCTS_API_REQUEST = 'modules/Products/API_REQUEST'
 

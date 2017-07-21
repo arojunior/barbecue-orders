@@ -58,7 +58,12 @@ class UsersRepository implements UsersInterface
             return $this->errorHandler->emit('LOGIN_ERROR');
         }
 
-        return $this->user->fetch();
+        $user = $this->user->fetch();
+
+        return array_merge([
+                'id' => $user['id'],
+                'email' => $user['email']
+            ], $this->user->makeToken($user));
     }
 
     public function checkIfExists($data)

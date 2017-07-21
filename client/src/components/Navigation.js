@@ -1,9 +1,13 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import {Navbar, Nav, NavItem} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
+import {compose, withHandlers} from 'recompose'
 
-const Navigation = () =>
+import {logoutAction} from '../modules/Login'
+
+const Navigation = ({logout}) =>
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
@@ -25,10 +29,15 @@ const Navigation = () =>
       <LinkContainer to="/users">
         <NavItem eventKey={4}>My account</NavItem>
       </LinkContainer>
-      <LinkContainer to="/">
-        <NavItem eventKey={5}>Logout</NavItem>
-      </LinkContainer>
+      <NavItem eventKey={5} href="#" onClick={logout}>
+        Logout
+      </NavItem>
     </Nav>
   </Navbar>
 
-export default Navigation
+export default compose(
+  connect(),
+  withHandlers({
+    logout: ({dispatch}) => () => dispatch(logoutAction())
+  })
+)(Navigation)

@@ -19,6 +19,10 @@ $container['errorHandler'] = function ($c) {
     return new BarbecueOrders\Libs\Errors();
 };
 
+$container['SessionMiddleware'] = function ($c) {
+    return new BarbecueOrders\Libs\SessionMiddleware;
+};
+
 $container['UsersRepository'] = function ($c) {
     $model = new BarbecueOrders\Models\User();
     $errorHandler = $c->get('errorHandler');

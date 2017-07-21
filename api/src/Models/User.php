@@ -2,6 +2,7 @@
 namespace BarbecueOrders\Models;
 
 use BarbecueOrders\Models\App;
+use Firebase\JWT\JWT;
 
 class User extends App
 {
@@ -19,6 +20,20 @@ class User extends App
             $data,
             ['password' => password_hash($data['password'], PASSWORD_DEFAULT)]
         );
+    }
+
+    public function makeToken($user)
+    {
+        $data = $this->tokenData($user);
+        $jwt = $this->tokenConfig();
+
+        $token = JWT::encode(
+            $data,
+            $jwt['key'],
+            $jwt['algorithm']
+        );
+
+        return  ['token' => $token];
     }
 
     public function checkFormFields($data)
@@ -43,6 +58,27 @@ class User extends App
                         email='".$data['email']."' AND
                         id <> ".$data['id']."
                 "));
+    }
+
+    public function tokenConfig()
+    {
+        return [
+            'key'       => 'soulfly',
+            'algorithm' => 'HS256'
+        ];
+    }
+
+    public function tokenData($user)
+    {
+        return [
+            'iat'  => 1356999524,
+            'nbf'  => 1357000000,
+            'iss'  => 'arojunior.github.io',
+            'data' => [
+                    'id'    => $user['id'],
+                    'email' => $user['email']
+                ]
+        ];
     }
 
 }

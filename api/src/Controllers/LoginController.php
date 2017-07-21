@@ -18,14 +18,11 @@ class LoginController extends AppController
     {
         $data = $request->getParsedBody();
 
-        $user = $this->user->login($data);
+        $token = $this->user->login($data);
 
-        return ($user['error']
-                ? $this->errorHandler->toJson($user['error'], $response)
-                : $response->withJson([
-                    'id' => $user['id'],
-                    'email' => $data['email']
-                ])
+        return (isset($token['error'])
+                ? $this->errorHandler->toJson($token['error'], $response)
+                : $response->withJson($token)
             );
     }
 }

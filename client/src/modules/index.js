@@ -40,6 +40,7 @@ const localStore = getState()
 
 const defaultState = {
   isLogged: false,
+  user: {},
   error: null,
   order_items: [],
   company_orders: []

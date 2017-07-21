@@ -16,11 +16,12 @@ const Dashboard = ({companies}) => {
 
 const DashboardComponent = compose(
   connect(state => ({
-    companies: state.companies
+    companies: state.companies,
+    user: state.user
   })),
   lifecycle({
     componentDidMount() {
-      this.props.dispatch(getCompaniesAndOrders())
+      this.props.dispatch(getCompaniesAndOrders(this.props.user))
     }
   })
 )(Dashboard)
