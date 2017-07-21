@@ -1,4 +1,9 @@
 <?php
 // Application middleware
 
-// e.g: $app->add(new \Slim\Csrf\Guard);
+$allowedRoutes = [
+    '/users',
+    '/login'
+];
+
+$app->add(new BarbecueOrders\Libs\SessionMiddleware($allowedRoutes));
