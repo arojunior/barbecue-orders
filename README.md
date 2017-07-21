@@ -66,7 +66,7 @@ To run this application without Docker, you gonna need PHP 5.6+, Composer and My
 
 ### New company
 - [x] Users can create one or more companies. If they got no companies, they can't create orders
-- [ ] The form should verify if ENI (a.k.a CNPJ in Brazil) is valid. All fields are required
+- [x] The form should verify if ENI (a.k.a CNPJ in Brazil) is valid. All fields are required
 
 ### New order
 - [x] Users should select one company to create an order, after that they can select the product and quantity
