@@ -1,7 +1,8 @@
 import React from 'react'
-import {Field, reduxForm} from 'redux-form'
+import {Field, change, reduxForm} from 'redux-form'
 import {required} from 'redux-form-field-wrapper'
 import {Col, Button, FormGroup} from 'react-bootstrap'
+import {CNPJ} from 'cpf_cnpj'
 
 import fieldConfig from '../../../components/FormConfig'
 
@@ -44,6 +45,21 @@ const Form = props => {
   )
 }
 
+const onChange = (values, dispatch) => {
+  dispatch(change('formNewCompany', 'eni', CNPJ.strip(values.eni)))
+}
+
+const validate = values => {
+  let errors = {}
+  if (!CNPJ.isValid(values.eni)) {
+    errors.eni = 'Not valid! (it should be a Brazilian CNPJ)'
+  }
+
+  return errors
+}
+
 export default reduxForm({
-  form: 'formNewCompany'
+  form: 'formNewCompany',
+  onChange,
+  validate
 })(Form)
