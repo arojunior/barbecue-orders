@@ -1,5 +1,7 @@
 # Barbecue orders
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/arojunior/barbecue-orders/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/arojunior/barbecue-orders/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/arojunior/barbecue-orders/badges/build.png?b=master)](https://scrutinizer-ci.com/g/arojunior/barbecue-orders/build-status/master)
+
 ### Backend Stack
 - PHP
 - Mysql
