@@ -1,21 +1,21 @@
-import {browserHistory} from 'react-router'
-import {createAction} from 'redux-actions'
+import { createAction } from 'redux-actions';
+import history from '../../services/history';
 
-const PUSH = 'modules/Router/PUSH'
+const PUSH = 'modules/Router/PUSH';
 
-export const redirect = createAction(PUSH)
+export const redirect = createAction(PUSH);
 
 export default {
   reducer: {
     [PUSH]: (state, action) => ({
       ...state,
-      route: action.payload
-    })
+      route: action.payload,
+    }),
   },
   middleware: {
-    [PUSH]: store => next => action => {
-      browserHistory.push(action.payload)
-      return next(action)
-    }
-  }
-}
+    [PUSH]: (store) => (next) => (action) => {
+      history.push(action.payload);
+      return next(action);
+    },
+  },
+};

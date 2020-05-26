@@ -1,28 +1,30 @@
-import boot from 'redux-boot'
-import {reducer as formReducer} from 'redux-form'
-import {getState} from 'redux-localstore'
-import {isEmpty} from 'ramda'
+import boot from 'redux-boot';
+import { reducer as formReducer } from 'redux-form';
+import { getState } from 'redux-localstore';
+import { isEmpty } from 'ramda';
 
-import Router from './Router'
-import Errors from './Errors'
-import Login from './Login'
-import Users from './Users'
-import Companies from './Companies'
-import Products from './Products'
-import Orders from './Orders'
+import Router from './Router';
+import Errors from './Errors';
+import Login from './Login';
+import Users from './Users';
+import Companies from './Companies';
+import Products from './Products';
+import Orders from './Orders';
 
-const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f
+const devTools = window.devToolsExtension
+  ? window.devToolsExtension()
+  : (f) => f;
 
 const formModule = {
   reducer: (state, action) => ({
     ...state,
-    form: formReducer(state.form, action)
-  })
-}
+    form: formReducer(state.form, action),
+  }),
+};
 
 const enhancer = {
-  enhancer: devTools
-}
+  enhancer: devTools,
+};
 
 const modules = [
   Router,
@@ -33,16 +35,16 @@ const modules = [
   Companies,
   Products,
   Orders,
-  enhancer
-]
+  enhancer,
+];
 
-const localStore = getState()
+const localStore = getState();
 
 const defaultState = {
   isLogged: false,
   error: null,
   order_items: [],
-  company_orders: []
-}
+  company_orders: [],
+};
 
-export default boot(isEmpty(localStore) ? defaultState : localStore, modules)
+export default boot(isEmpty(localStore) ? defaultState : localStore, modules);

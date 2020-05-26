@@ -1,20 +1,18 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {compose, withHandlers, withProps} from 'recompose'
-import {Grid, Row, Col, Jumbotron} from 'react-bootstrap'
-
-import {loginAction} from '../../modules/Login'
-
-import Form from './components/Form'
-import Alert from '../../components/Alert'
+import React from 'react';
+import { connect } from 'react-redux';
+import { compose, withHandlers, withProps } from 'recompose';
+import { Grid, Row, Col, Jumbotron } from 'react-bootstrap';
+import { loginAction } from '../../modules/Login';
+import Form from './components/Form';
+import Alert from '../../components/Alert';
 
 const styles = {
   container: {
-    marginTop: '40px'
-  }
-}
+    marginTop: '40px',
+  },
+};
 
-const LoginContainer = ({handleSubmit, styles, error}) =>
+const LoginContainer = ({ handleSubmit, styles, error }) => (
   <Grid style={styles.container}>
     <Col md={8} mdOffset={2}>
       <Jumbotron>
@@ -32,16 +30,17 @@ const LoginContainer = ({handleSubmit, styles, error}) =>
       </Jumbotron>
     </Col>
   </Grid>
+);
 
 export default compose(
-  connect(state => ({
+  connect((state) => ({
     isLogged: state.isLogged,
-    error: state.error
+    error: state.error,
   })),
   withProps({
-    styles
+    styles,
   }),
   withHandlers({
-    handleSubmit: props => values => props.dispatch(loginAction(values))
+    handleSubmit: (props) => (values) => props.dispatch(loginAction(values)),
   })
-)(LoginContainer)
+)(LoginContainer);

@@ -1,22 +1,21 @@
-import React from 'react'
-import {render} from 'react-dom'
-import {Provider} from 'react-redux'
-import storeSynchronize from 'redux-localstore'
-import {Router, browserHistory} from 'react-router'
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import storeSynchronize from 'redux-localstore';
+import { Router as ReactRouter } from 'react-router-dom';
+import RouterComponent from './RouterComponent';
+import app from './modules';
+import history from './services/history';
 
-import registerServiceWorker from './registerServiceWorker'
-import routes from './routes'
-import app from './modules'
-
-app.then(({store}) => {
-  storeSynchronize(store)
+app.then(({ store }) => {
+  storeSynchronize(store);
 
   render(
     <Provider store={store}>
-      <Router history={browserHistory} routes={routes} />
+      <ReactRouter history={history}>
+        <RouterComponent />
+      </ReactRouter>
     </Provider>,
     document.getElementById('root')
-  )
-})
-
-registerServiceWorker()
+  );
+});
