@@ -1,34 +1,34 @@
-import React from 'react'
-import {Link} from 'react-router'
-import {Navbar, Nav, NavItem} from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
 
-const Navigation = () =>
+const Navigation = () => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
-        <Link className="navbar-brand" href="/dashboard">
+        <Link className="navbar-brand" to="/dashboard">
           Barbecue Orders
         </Link>
       </Navbar.Brand>
     </Navbar.Header>
     <Nav pullRight>
-      <LinkContainer to="/dashboard">
-        <NavItem eventKey={1}>Dashboard</NavItem>
-      </LinkContainer>
-      <LinkContainer to="/companies">
-        <NavItem eventKey={2}>New company</NavItem>
-      </LinkContainer>
-      <LinkContainer to="/orders">
-        <NavItem eventKey={3}>New order</NavItem>
-      </LinkContainer>
-      <LinkContainer to="/users">
-        <NavItem eventKey={4}>My account</NavItem>
-      </LinkContainer>
-      <LinkContainer to="/">
-        <NavItem eventKey={5}>Logout</NavItem>
-      </LinkContainer>
+      <li>
+        <Link to="/dashboard">Dashboard</Link>
+      </li>
+      <li eventKey={2}>
+        <Link to="/companies">New company</Link>
+      </li>
+      <li>
+        <Link to="/orders">New order</Link>
+      </li>
+      <li>
+        <Link to="/users">My account</Link>
+      </li>
+      <li>
+        <Link to="/">Logout</Link>
+      </li>
     </Nav>
   </Navbar>
+);
 
-export default Navigation
+export default Navigation;

@@ -1,27 +1,23 @@
-import React from 'react'
-import {Table} from 'react-bootstrap'
-import {Link} from 'react-router'
+import React from 'react';
+import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-export default ({companies}) => {
+export default ({ companies }) => {
   const rows = companies
-    ? companies.map(company => {
+    ? companies.map((company) => {
         return (
           <tr key={company.id}>
-            <td>
-              {company.name}
-            </td>
-            <td>
-              {company.eni}
-            </td>
+            <td>{company.name}</td>
+            <td>{company.eni}</td>
             <td>
               <Link to={`/companies/${company.id}/orders`}>
                 {company.orders}
               </Link>
             </td>
           </tr>
-        )
+        );
       })
-    : null
+    : null;
 
   return (
     <Table striped bordered condensed hover>
@@ -32,9 +28,7 @@ export default ({companies}) => {
           <th>Orders</th>
         </tr>
       </thead>
-      <tbody>
-        {rows}
-      </tbody>
+      <tbody>{rows}</tbody>
     </Table>
-  )
-}
+  );
+};

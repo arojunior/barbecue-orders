@@ -1,9 +1,9 @@
-import {getState} from 'redux-localstore'
-import {browserHistory} from 'react-router'
+import { getState } from 'redux-localstore';
+import history from '../services/history';
 
-export default Component => {
+export default (Component) => {
   if (!getState().isLogged) {
-    return browserHistory.push('/')
+    return history.push('/');
   }
-  return Component
-}
+  return Component;
+};
