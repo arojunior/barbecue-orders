@@ -1,42 +1,48 @@
 <?php
 namespace BarbecueOrders\Controllers;
 
-use BarbecueOrders\Controllers\AppController;
+use BarbecueOrders\Libs\Errors;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use BarbecueOrders\Repositories\CompaniesRepository;
 
 class CompaniesController extends AppController
 {
 
     protected $company;
 
-    public function __construct($repository)
+    public function __construct(CompaniesRepository $repository)
     {
-        $this->company = $repository;
         parent::__construct();
+        $this->company = $repository;
     }
 
-    public function add($request, $response)
+    public function add(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
 
         $company = $this->company->create($data);
 
-        return ($company['error']
-                ? $this->errorHandler->toJson($company['error'], $response)
-                : $response->withJson(['id' => $company['id']])
-            );
+        if ($company['error']) {
+            return Errors::toJson($response, $company['error']);
+        }
+
+        return $this->withJson($response, [
+            'id' => $company['id'],
+        ]);
     }
 
-    public function orders($request, $response)
+    public function orders(Request $request, Response $response): Response
     {
-        return $response->withJson($this->company->findCompaniesAndOrders());
+        return $this->withJson($response, $this->company->findCompaniesAndOrders());
     }
 
-    public function ordersByCompany($request, $response)
+    public function ordersByCompany(Request $request, Response $response): Response
     {
         $route = $request->getAttribute('route');
         $id = $route->getArgument('id');
 
-        return $response->withJson($this->company->findOrdersByCompany($id));
+        return $this->withJson($response, $this->company->findOrdersByCompany($id));
     }
 
 }

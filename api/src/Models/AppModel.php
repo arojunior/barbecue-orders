@@ -3,9 +3,8 @@ namespace BarbecueOrders\Models;
 
 use SimpleORM\core\model\Model;
 
-class App extends Model
+class AppModel extends Model
 {
-
     public $db_config;
 
     public function __construct()

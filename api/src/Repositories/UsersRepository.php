@@ -2,23 +2,23 @@
 namespace BarbecueOrders\Repositories;
 
 use BarbecueOrders\Repositories\Contracts\UsersInterface;
+use BarbecueOrders\Models\User;
+use BarbecueOrders\Libs\Errors;
 
 class UsersRepository implements UsersInterface
 {
 
     protected $user;
-    protected $errorHandler;
 
-    public function __construct($model, $errorHandler)
+    public function __construct(User $model)
     {
         $this->user = $model;
-        $this->errorHandler = $errorHandler;
     }
 
     public function create(array $data) : array
     {
         if (self::checkIfExists($data)) {
-            return $this->errorHandler->emit('USER_ALREADY_EXISTS');
+            return Errors::get('USER_ALREADY_EXISTS');
         }
 
         $data = $this->user->checkFormFields($data);
@@ -32,7 +32,7 @@ class UsersRepository implements UsersInterface
         $data = $this->user->checkFormFields($data);
 
         if ($this->user->checkEmailEdit($data)) {
-            return $this->errorHandler->emit('USER_ALREADY_EXISTS');
+            return Errors::get('USER_ALREADY_EXISTS');
         }
 
         if (isset($data['password']) && !empty($data['password'])) {
@@ -51,11 +51,11 @@ class UsersRepository implements UsersInterface
     public function login(array $data) : array
     {
         if ( ! self::checkIfExists($data)) {
-            return $this->errorHandler->emit('LOGIN_ERROR');
+            return Errors::get('LOGIN_ERROR');
         }
 
         if ( ! $this->user->validatePassword($data)) {
-            return $this->errorHandler->emit('LOGIN_ERROR');
+            return Errors::get('LOGIN_ERROR');
         }
 
         return $this->user->fetch();

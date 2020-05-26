@@ -1,9 +1,7 @@
 <?php
 namespace BarbecueOrders\Models;
 
-use BarbecueOrders\Models\App;
-
-class User extends App
+class User extends AppModel
 {
 
     protected $table = 'users';

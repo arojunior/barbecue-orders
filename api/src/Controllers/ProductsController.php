@@ -1,21 +1,23 @@
 <?php
 namespace BarbecueOrders\Controllers;
 
-use BarbecueOrders\Controllers\AppController;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use BarbecueOrders\Repositories\ProductsRepository;
 
 class ProductsController extends AppController
 {
 
     protected $product;
 
-    public function __construct($repository)
+    public function __construct(ProductsRepository $repository)
     {
-        $this->product = $repository;
         parent::__construct();
+        $this->product = $repository;
     }
 
-    public function index($request, $response)
+    public function index(Request $request, Response $response): Response
     {
-        return $response->withJson($this->product->findAll());
+        return $this->withJson($response, $this->product->findAll());
     }
 }

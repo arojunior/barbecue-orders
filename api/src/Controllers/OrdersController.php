@@ -1,37 +1,39 @@
 <?php
 namespace BarbecueOrders\Controllers;
 
-use BarbecueOrders\Controllers\AppController;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use BarbecueOrders\Repositories\OrdersRepository;
 
 class OrdersController extends AppController
 {
 
     protected $order;
 
-    public function __construct($repository)
+    public function __construct(OrdersRepository $repository)
     {
         $this->order = $repository;
         parent::__construct();
     }
 
-    public function add($request, $response)
+    public function add(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
 
         $order = $this->order->create($data['order_company']);
         $this->order->addItems($order, $data['order_items']);
 
-        return $response->withJson(['id' => $order]);
+        return $this->withJson($response, ['id' => $order]);
     }
 
-    public function delete($request, $response)
+    public function delete(Request $request, Response $response): Response
     {
         $route = $request->getAttribute('route');
         $id = $route->getArgument('id');
 
         $this->order->delete($id);
 
-        return $response->withJson(['id' => $id]);
+        return $this->withJson($response, ['id' => $id]);
     }
 
 }
