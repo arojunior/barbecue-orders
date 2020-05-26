@@ -1,22 +1,18 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Layout from './layouts';
-import Dashboard from './routes/Dashboard';
-import Orders from './routes/Orders/AddOrders';
-import Login from './routes/Login';
-import Companies from './routes/Companies/Add';
-import OrdersByCompany from './routes/Companies/Orders';
-import Users from './routes/Users/Add';
-import MyAccount from './routes/Users/MyAccount';
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Layout from './layouts'
+import Dashboard from './routes/Dashboard'
+import Orders from './routes/Orders/AddOrders'
+import Login from './routes/Login'
+import Companies from './routes/Companies/Add'
+import OrdersByCompany from './routes/Companies/Orders'
+import Users from './routes/Users/Add'
+import MyAccount from './routes/Users/MyAccount'
 
 const RoutesComponent = () => (
   <Switch>
     <BrowserRouter>
-      <Route
-        exact
-        path="/"
-        component={Login}
-      />
+      <Route exact path="/" component={Login} />
       <Route
         exact
         path="/dashboard"
@@ -61,7 +57,7 @@ const RoutesComponent = () => (
             <Users {...props} />
           </Layout>
         )}
-      />      
+      />
       <Route
         exact
         path="/orders"
@@ -73,6 +69,6 @@ const RoutesComponent = () => (
       />
     </BrowserRouter>
   </Switch>
-);
+)
 
-export default RoutesComponent;
+export default RoutesComponent
