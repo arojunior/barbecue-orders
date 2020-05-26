@@ -4,9 +4,9 @@ namespace BarbecueOrders\Repositories\Contracts;
 interface OrdersInterface
 {
 
-    public function create(int $company_id) : int;
+    function create(int $company_id): int;
 
-    public function addItems(int $order_id, array $items);
+    function addItems(int $order_id, array $items);
 
-    public function delete(int $id);
+    function delete(int $id);
 }

@@ -12,10 +12,14 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0",
-    "slim/slim": "^3.1",
+    "php": ">=7.2.0",
+    "slim/slim": "4.*",
     "monolog/monolog": "^1.17",
-    "arojunior/php-orm-pdo": "dev-master"
+    "arojunior/php-orm-pdo": "dev-master",
+    "slim/psr7": "^1.1",
+    "php-di/php-di": "^6.1",
+    "selective/config": "^0.2.0",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {

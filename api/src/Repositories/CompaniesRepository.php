@@ -2,6 +2,9 @@
 namespace BarbecueOrders\Repositories;
 
 use BarbecueOrders\Repositories\Contracts\CompaniesInterface;
+use BarbecueOrders\Libs\Errors;
+use BarbecueOrders\Models\Company;
+use BarbecueOrders\Libs\BusinessException;
 
 class CompaniesRepository implements CompaniesInterface
 {
@@ -9,16 +12,15 @@ class CompaniesRepository implements CompaniesInterface
     protected $company;
     protected $errorHandler;
 
-    public function __construct($model, $errorHandler)
+    public function __construct(Company $model)
     {
         $this->company = $model;
-        $this->errorHandler = $errorHandler;
     }
 
     public function create(array $data) : array
     {
         if (self::checkIfExists($data)) {
-            return $this->errorHandler->emit('COMPANY_ALREADY_EXISTS');
+            throw new BusinessException(Errors::get('COMPANY_ALREADY_EXISTS'));
         }
 
         $this->company->save($data);

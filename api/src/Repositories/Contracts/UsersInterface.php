@@ -4,12 +4,12 @@ namespace BarbecueOrders\Repositories\Contracts;
 interface UsersInterface
 {
 
-  public function create(array $data) : array;
+  function create(array $data): array;
 
-  public function update(array $data) : array;
+  function update(array $data): array;
 
-  public function find(int $id) : array;
+  function find(int $id): array;
 
-  public function login(array $data) : array;
+  function login(array $data): array;
 
 }

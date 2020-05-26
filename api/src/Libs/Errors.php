@@ -1,9 +1,11 @@
 <?php
 namespace BarbecueOrders\Libs;
 
-class Errors
+use Psr\Http\Message\ResponseInterface as Response;
+
+abstract class Errors
 {
-    protected $exceptions = [
+    private static $exceptions = [
             'USER_ALREADY_EXISTS' => [
                 'error' => [
                     'code' => 409,
@@ -25,13 +27,17 @@ class Errors
         ];
 
 
-    public function emit($id)
+    public function get($id)
     {
-        return $this->exceptions[$id];
+        return self::$exceptions[$id];
     }
 
-    public function toJson($e, $response)
+    public function toJson(Response $response, array $error)
     {
-        return $response->withStatus($e['code'])->withJson($e);
+        $response->getBody()->write(json_encode($error));
+
+        return $response
+                ->withHeader('Content-Type', 'application/json')
+                ->withStatus($error['code']);
     }
 }

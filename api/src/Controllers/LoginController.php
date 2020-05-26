@@ -1,31 +1,35 @@
 <?php
 namespace BarbecueOrders\Controllers;
 
-use BarbecueOrders\Controllers\AppController;
+use BarbecueOrders\Libs\Errors;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use BarbecueOrders\Repositories\UsersRepository;
 
 class LoginController extends AppController
 {
 
     protected $user;
 
-    public function __construct($usersRepository)
+    public function __construct(UsersRepository $usersRepository)
     {
-        $this->user = $usersRepository;
         parent::__construct();
+        $this->user = $usersRepository;
     }
 
-    public function index($request, $response)
+    public function index(Request $request, Response $response)
     {
         $data = $request->getParsedBody();
 
         $user = $this->user->login($data);
 
-        return ($user['error']
-                ? $this->errorHandler->toJson($user['error'], $response)
-                : $response->withJson([
-                    'id' => $user['id'],
-                    'email' => $data['email']
-                ])
-            );
+        if ($user['error']) {
+            return Errors::toJson($response, $user['error']);
+        }
+
+        return $this->withJson($response, [
+            'id' => $user['id'],
+            'email' => $data['email']
+        ]);
     }
 }
